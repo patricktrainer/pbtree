@@ -1,0 +1,12 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "type": "npm",
+        "script": "rebuild",
+        "problemMatcher": [],
+        "label": "npm: rebuild",
+        "detail": "node scripts/rebuild.js"
+      }
+    ]
+  }      

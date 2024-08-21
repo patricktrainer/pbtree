@@ -1,0 +1,26 @@
+{
+  "name": "pbtree",
+  "version": "0.1.0",
+  "description": "Like `pbcopy` but for prompt building.",
+  "main": "dist/index.js",
+  "bin": {
+    "pbtree": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.tsx",
+    "rebuild": "node scripts/rebuild.js"
+  },
+  "dependencies": {
+    "clipboardy": "^2.3.0",
+    "ink": "^3.2.0",
+    "react": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.12",
+    "@types/react": "^17.0.37",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.2"
+  }
+}
