@@ -5,6 +5,16 @@ import path from "path";
 import { outputXml } from "./utils/generateOutput";
 import clipboard from "clipboardy";
 
+const COLORS = {
+    default: "lightGray",
+    selected: "yellow",
+    current: "blue",
+    folder: "cyan",
+    file: "green",
+    search: "magenta",
+    info: "gray"
+  };
+
 const ICONS = {
     FOLDER_CLOSED: "📪",
     FOLDER_OPEN: "📬",
@@ -331,23 +341,22 @@ const App: FC = () => {
                 <Box marginLeft={indentationLevel} key={item.id}>
                     <Text
                         color={
-                            item.id === currentItemId
-                                ? "magenta"
-                                : selectedItems.find(
-                                    (selectedItem) => selectedItem.id === item.id
-                                )
-                                    ? "cyan"
-                                    : "white"
+                        item.id === currentItemId
+                            ? COLORS.current
+                            : selectedItems.find((selectedItem) => selectedItem.id === item.id)
+                            ? COLORS.selected
+                            : COLORS.default
                         }
+                        bold={item.id === currentItemId}
                     >
                         {selectedItems.find((selectedItem) => selectedItem.id === item.id)
-                            ? ICONS.SELECTED
-                            : ICONS.NOT_SELECTED}{" "}
+                        ? ICONS.SELECTED
+                        : ICONS.NOT_SELECTED}{" "}
                         {item.isDirectory
-                            ? item.isExpanded
-                                ? ICONS.FOLDER_OPEN
-                                : ICONS.FOLDER_CLOSED
-                            : ICONS.FILE}{" "}
+                        ? item.isExpanded
+                            ? ICONS.FOLDER_OPEN
+                            : ICONS.FOLDER_CLOSED
+                        : ICONS.FILE}{" "}
                         {item.name}
                         {item.isDirectory && "/"}
                     </Text>
@@ -391,12 +400,8 @@ const App: FC = () => {
         <Box flexDirection="column" marginTop={2} marginBottom={2}>
             <Box flexDirection="column" marginBottom={1}>
                 <Box>
-                    <Text color={'gray'}>
-                        Search:{" "}
-                        <Text color="cyan" italic>
-                            {searchQuery ? searchQuery : <Text>type to search</Text>}
-                        </Text>
-                    </Text>
+                    <Text color={COLORS.info}>Search: </Text>
+                    <Text color={COLORS.search} italic>{searchQuery ? searchQuery : "type to search"}</Text>
                 </Box>
             
                 <Box> 
