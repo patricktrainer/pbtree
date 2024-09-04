@@ -2,6 +2,8 @@
 
 PBTree is like `pbcopy`, but supercharged. 🚀
 
+![PBTree in action](./assets/pbtree.png)
+
 ## ✨ Features
 
 - 🖥️ Interactive file navigation
