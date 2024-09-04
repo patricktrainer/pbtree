@@ -87,8 +87,8 @@ const App: FC = () => {
         const files = outputXml(selectedItems);
         clipboard.writeSync(files.content);
         setMessage(
-            <Text color="white">
-                💾 Successfully copied <Text color="cyan">{files.fileCount}</Text> file
+            <Text color={COLORS.info}>
+                💾 Successfully copied <Text color={COLORS.folder}>{files.fileCount}</Text> file
                 {files.fileCount > 1 && "s"} to clipboard
             </Text>
         );
@@ -405,16 +405,16 @@ const App: FC = () => {
                 </Box>
             
                 <Box> 
-                    <Text color={'gray'}>
+                    <Text color={COLORS.info}>
                         Selected:{" "}
-                        <Text color="cyan">{selectedItems.length}</Text>
+                        <Text color={COLORS.folder}>{selectedItems.length}</Text>
                     </Text>
                 </Box>
             </Box>
             <Box flexDirection="column">
                 {renderItems(expandedItems)}
                 {expandedItems.length === 0 && (
-                    <Text color="gray" italic>
+                    <Text color={COLORS.info} italic>
                         No items found
                     </Text>
                 )}
