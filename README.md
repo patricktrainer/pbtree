@@ -2,7 +2,7 @@
 
 PBTree is like `pbcopy`, but supercharged. 🚀
 
-![PBTree in action](./assets/pbtree.png)
+<img src="./assets/pbtree.png" height="350">
 
 ## ✨ Features
 
