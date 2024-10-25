@@ -4,6 +4,7 @@ import fs from "fs";
 import path from "path";
 import { outputXml } from "./utils/generateOutput";
 import clipboard from "clipboardy";
+import { getQuickResponse } from "./api"; // Importing the getQuickResponse function
 
 const COLORS = {
     default: "lightGray",
@@ -81,6 +82,11 @@ const App: FC = () => {
         if (input && !key.ctrl && !key.meta && !key.shift) {
             setSearchQuery((prev) => prev + input);
         }
+        // If "shift + Enter" is pressed, call the getQuickResponse function
+        if (key.shift && key.return) {
+            callGetQuickResponse();
+            return;
+        }
     });
 
     const copyContentsOfFilesAndFolders = () => {
@@ -95,6 +101,24 @@ const App: FC = () => {
         setTimeout(() => {
             process.exit(0);
         }, 300);
+    };
+
+    const callGetQuickResponse = async () => {
+        const files = outputXml(selectedItems);
+        try {
+            const response = await getQuickResponse(files.content);
+            setMessage(
+                <Text color={COLORS.info}>
+                    🤖 Quick response: <Text color={COLORS.folder}>{response}</Text>
+                </Text>
+            );
+        } catch (error) {
+            setMessage(
+                <Text color={COLORS.info}>
+                    ❌ Failed to get quick response
+                </Text>
+            );
+        }
     };
 
     const toggleSelection = () => {

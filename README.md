@@ -57,6 +57,7 @@ pbtree
 - ⬅️ ➡️ Navigate back and forth between folders
 - <kbd>space</kbd> Select or deselect the current item (file or folder)
 - <kbd>⏎ return</kbd> Copy selected content to the clipboard and exit.
+- <kbd>shift + ⏎ return</kbd> Get a quick response using Anthropic's API.
 
 ## 👨‍💻 Development
 
