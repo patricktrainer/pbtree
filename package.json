@@ -1,6 +1,6 @@
 {
   "name": "pbtree",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Like `pbcopy` but for prompt building.",
   "main": "dist/index.js",
   "bin": {
@@ -13,6 +13,7 @@
     "rebuild": "node scripts/rebuild.js"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.30.1",
     "clipboardy": "^2.3.0",
     "ink": "^3.2.0",
     "react": "^17.0.2"
